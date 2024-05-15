@@ -17,9 +17,9 @@ class TipoUsuario(models.TextChoices):
 
 class TipoDocumento(models.TextChoices):
     CEDULA_CIUDADANIA = 'CC', 'Cédula de Ciudadanía'
-    CEDULA_EXTRANJERIA = 'CE', 'Cédula de Extranjería'
     TARJETA_IDENTIDAD = 'TI', 'Tarjeta de Identidad'
-    PERMISO_PERMANENCIA = 'PP', 'Permiso especial de permanencia'
+    CEDULA_EXTRANJERIA = 'CE', 'Cédula de Extranjería'
+    PERMISO_PERMANENCIA = 'PP', 'PEP'
     PROTECCION_TEMPORAL = 'PT', 'Permiso por Protección Temporal'
 
 class EstratoSocioeconomico(models.TextChoices):

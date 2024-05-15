@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth import authenticate
+from django.urls import reverse
 
 from sena_genius.models import Curso
 from sena_genius.forms import (
@@ -22,13 +23,13 @@ def login(request):
             password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, f"Bienvenido {user.username}!")
+                messages.success(request, f"Bienvenido {user.nombre}!")
                 return redirect('home')
             else:
                 messages.error(request, "Detalle de login invalido..")
     else:
         form = CustomLoginForm()
-    return render(request, 'custom_login.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 
 def register_student(request):
