@@ -84,7 +84,7 @@ class StudentRegistrationForm(UserCreationForm):
 
 class CursoFiltroForm(forms.Form):
     categoria = forms.ChoiceField(
-        choices=[('', 'Todas')] + list(CategoriaCurso.choices),
+        choices=[('', ' Todos los tipos ')] + [(choice.value, choice.label) for choice in CategoriaCurso],
         required=False,
         label='Categoría'
     )

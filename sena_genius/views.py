@@ -57,8 +57,7 @@ def home_view(request):
     form = CursoFiltroForm(request.GET)
 
     if form.is_valid():
-        categoria = request.GET.get('categoria')
-
+        categoria = form.cleaned_data.get('categoria')
         if categoria:
             cursos = cursos.filter(categoria=categoria)
 
