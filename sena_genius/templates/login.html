@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="login-container">
+        <div class="login-form">
+            <div class="image-container">
+                <img src="{% static 'img/logoSofia.png' %}" class="p-b-20">
+            </div>
+            <span class="login100-form-title p-b-50">
+                Ingreso Usuarios registrados
+            </span>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group wrap-input100">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <span  class="fa fa-id-card"></span>
+                    </span>
+                    {{ form.documento_tipo }}
+                    {% for error in form.documento_tipo.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="form-group wrap-input100">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <span  class="fa fa-user-circle"></span>
+                    </span>
+                    {{ form.documento_numero }}
+                    {% for error in form.documento_numero.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="form-group wrap-input100">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <span  class="fa fa-lock"></span>
+                    </span>
+                    {{ form.password }}
+                    {% for error in form.password.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="error-message">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <div class="contact100-form-checkbox">						
+                    <span class="txt1" for="ckb1">
+                        <a href="http://oferta.senasofiaplus.edu.co/sofia-oferta/recuperarclave.html"><i class="fa fa-key"></i> Olvidé mi contraseña</a>
+                    </span>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg btn-block custom-btn"><span class="custom-btn-text">INGRESAR</span></button>
+                <div class="text-center w-full p-t-42 p-b-22" id="texto-login">
+                    <span class="txt1">
+                        <a href="http://portal.senasofiaplus.edu.co/index.php?option=com_content&amp;task=view&amp;id=239&amp;Itemid=254" title="Si usted NO es funcionario y desea activar su usuario debe comunicarse con el Call Center. 
+                            Si usted es un funcionario y desea activar su usuario debe enviar una solicitud a travÃ©s de correo electrÃ³nico al Administrador de Centro o al Administrador del Sistema.">Su usuario está Bloqueado o Inactivo?</a>
+                    </span> 
+                </div>  
+            </form>
+        </div>
+    </div>
+{% endblock %}

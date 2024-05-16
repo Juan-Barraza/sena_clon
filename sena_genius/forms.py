@@ -11,13 +11,13 @@ from sena_genius.models import (
     DepartamentoColombia,
     CategoriaCurso,
 )
-from sena_genius.models import TIPO_DOCUMENTO_CHOICES
+from sena_genius.models import TipoDocumento
 
 
 class CustomLoginForm(forms.Form):
-    documento_tipo = forms.ChoiceField(choices=TIPO_DOCUMENTO_CHOICES, label="Tipo de Documento")
-    documento_numero = forms.CharField(label="Número de Documento")
-    password = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
+    documento_tipo = forms.ChoiceField(choices=TipoDocumento.choices, label="Tipo de Documento", widget=forms.Select(attrs={'class': 'form-control input100'}))
+    documento_numero = forms.CharField(label="Número de Documento", widget=forms.TextInput(attrs={'placeholder': 'Número de documento', 'class': 'form-control input100'}))
+    password = forms.CharField(label="Contraseña", widget=forms.PasswordInput(attrs={'placeholder': 'Contraseña', 'class': 'form-control input100'}))
 
     def clean(self):
         documento_tipo = self.cleaned_data.get('documento_tipo')
@@ -29,6 +29,7 @@ class CustomLoginForm(forms.Form):
             if user is None:
                 raise forms.ValidationError("Detalles de inicio de sesión incorrectos.")
         return self.cleaned_data
+
 
 
 class StudentRegistrationForm(UserCreationForm):
@@ -63,7 +64,7 @@ class StudentRegistrationForm(UserCreationForm):
 
     class Meta:
         model = Usuario
-        fields = ('usuarioname', 'password1', 'password2', 'email',
+        fields = ('password1', 'password2', 'email',
                   'nombre', 'primer_apellido', 'segundo_apellido', 'genero',
                   'estrato_socioeconomico', 'tipo_usuario', 'documento_tipo', 'documento_numero',
                   'documento_archivo', 'pais_expedicion', 'departamento_expedicion',

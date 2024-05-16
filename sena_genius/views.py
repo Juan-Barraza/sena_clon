@@ -1,7 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth import authenticate
+from django.urls import reverse
 
 from sena_genius.models import Curso
 from sena_genius.forms import (
@@ -11,6 +13,8 @@ from sena_genius.forms import (
 )
 
 
+from django.contrib import messages
+
 def login(request):
     if request.method == 'POST':
         form = CustomLoginForm(request.POST)
@@ -18,17 +22,19 @@ def login(request):
             documento_tipo = form.cleaned_data.get('documento_tipo')
             documento_numero = form.cleaned_data.get('documento_numero')
             password = form.cleaned_data.get('password')
-            user = authenticate(documento_numero=documento_numero,
-            password=password)
+            user = authenticate(documento_numero=documento_numero, password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, f"Bienvenido {user.username}!")
+                messages.success(request, f"Bienvenido {user.nombre}!")
                 return redirect('home')
             else:
-                messages.error(request, "Detalle de login invalido..")
+                messages.error(request, "Por favor corrija los errores en el formulario.")
+        else:
+            messages.error(request, "Informacion de Usuario invalida.")
     else:
         form = CustomLoginForm()
-    return render(request, 'custom_login.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
+
 
 
 def register_student(request):
