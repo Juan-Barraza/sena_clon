@@ -1,73 +1,77 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <h1>Cursos</h1>
-    <ul>
-        {% for curso in cursos %}
-            <li>{{ curso.nombre }}</li>
-        {% endfor %}
-    </ul>
-    <div class="col-md-8" id="area_trabajo_1">
-        <div id="area_trabajo_buscador">
+<div id="curso">
+    <h1 style="margin-left: 20px;">Cursos</h1>
+</div>
+
+<ul>
+    {% for curso in cursos %}
+    <li>{{ curso.nombre }}</li>
+    {% endfor %}
+</ul>
+
+<div class="col-md-8" id="area_trabajo_1">
+    <div id="area_trabajo_buscador">
         <div>
-        <div id="area_trabajo_2_buscador_2">
-            <form action="{% url 'sena_genius:home' %}" method="get">
-            <h2>¿Qué le gustaría estudiar?</h2>
-            <div class="back_new">
-                <ul class="filtros">
-                    <li id="li_tipo" onclick="//" style="background-color: rgb(221, 221, 221);">
-                        <span id="label_tipo" style="margin-right: 3px;">Todos los tipos</span>
-                        <ul>
-                            <li id="filtro_tipo1">
-                                <div id="filtro_tipo">
-                                    <span class="radio_accion">
-                                        <label id="label199" style="font-weight: bold; background-color: rgb(221, 221, 221);">
-                                            <input checked="checked" class="chequeo" name="radio" onclick="filtro_main('opcion199', 'label199','Todos los tipos de formación');" type="checkbox" value="opcion199" id="opcion199">
-                                            <span class="texto_input" style="width:120px;">Todos los tipos</span>
-                                        </label>
-                                    </span>
-                                    <span class="radio_accion">
-                                        <label id="label200" style="background-color: rgb(225, 186, 252); font-weight: normal;">
-                                            <input class="chequeo" name="radio" onclick="filtro_main('opcion200', 'label200', 'Carreras técnicas');" type="checkbox" value="opcion200" id="opcion200">
-                                            <span style="width:120px;">Carreras técnicas</span>
-                                            <div class="tooltip tooltip_inicio" style="top: 48px; left: 137px; float:right; position:absolute; margin-left: 6px;">
-                                                <span>Programas de hasta dos años de duración, para cursar en un centro de formación o a través de Internet, que ofrecen un título formal reconocido por el ICFES. (Auxiliar, Técnico, Tecnólogo, Especialización Tecnológica, Operario)</span>
-                                            </div>
-                                        </label>
-                                    </span>
-                                    <span class="radio_accion">
-                                        <label id="label201" style="background-color: rgb(155, 205, 255); font-weight: normal;">
-                                            <input class="chequeo" name="radio" onclick="filtro_main('opcion201', 'label201', 'Cursos cortos');" type="checkbox" value="opcion201" id="opcion201">
-                                            <span style="width:120px;">Cursos cortos</span>
-                                            <div class="tooltip tooltip_inicio" style="top: 84px; left: 136px; float:right; position:absolute; margin-left: 6px;">
-                                                <span>Programas de formación complementaria de corta duración.</span>
-                                            </div>
-                                        </label>
-                                    </span>
-                                    <span class="radio_accion">
-                                        <label id="label202" style="background-color: rgb(102, 204, 204); font-weight: normal;">
-                                            <input class="chequeo" name="radio" onclick="filtro_main('opcion202', 'label202', 'Formación virtual');" type="checkbox" value="opcion202" id="opcion202">
-                                            <span style="width:120px;">Formación virtual</span>
-                                            <div class="tooltip tooltip_inicio" style="top: 120px; left: 137px; float:right; position:absolute; margin-left: 6px;">
-                                                <span>Programas de formación complementaria de corta duración para cursar a través de Internet.</span>
-                                            </div>
-                                        </label>
-                                    </span>
-                                    <span class="radio_accion">
-                                        <label id="label203" style="background-color: rgb(253, 207, 123); font-weight: normal;">
-                                            <input class="chequeo" name="radio" onclick="filtro_main('opcion203', 'label203', 'Formación Empresas');" type="checkbox" value="opcion203" id="opcion203">
-                                            <span style="width:120px;font-size:10px;">Formación empresas</span>
-                                            <div class="tooltip tooltip_inicio" style="top: 157px; left: 137px; float:right; position:absolute; margin-left: 6px;">
-                                                <span>Programas a la medida para las empresas. IMPORTANTE, Recuerde que debe conocer el código privado para inscribirse.</span>
-                                            </div>
-                                        </label>
-                                    </span>
-                                </div>
+            <div id="area_trabajo_2_buscador_2">
+                <form action="{% url 'sena_genius:home' %}" method="get">
+                    <h2>¿Qué le gustaría estudiar?</h2>
+                    <div class="back_new">
+                        <ul class="filtros">
+                            <li id="li_tipo" onclick="//" style="background-color: rgb(221, 221, 221);">
+                                <span id="label_tipo" style="margin-right: 3px;">Todos los tipos</span>
+                                <ul>
+                                    <li id="filtro_tipo1">
+                                        <div id="filtro_tipo">
+                                            <span class="radio_accion">
+                                                <label id="label199" style="font-weight: bold; background-color: rgb(221, 221, 221);">
+                                                    <input checked="checked" class="chequeo" name="radio" onclick="filtro_main('opcion199', 'label199','Todos los tipos de formación');" type="checkbox" value="opcion199" id="opcion199">
+                                                    <span class="texto_input" style="width:120px;">Todos los tipos</span>
+                                                </label>
+                                            </span>
+                                            <span class="radio_accion">
+                                                <label id="label200" style="background-color: rgb(225, 186, 252); font-weight: normal;">
+                                                    <input class="chequeo" name="radio" onclick="changeLabel('Carreras técnicas');"type="checkbox" value="opcion200" id="opcion200">
+                                                    <span style="width:120px;">Carreras técnicas</span>
+                                                    <div class="tooltip tooltip_inicio" style="top: 48px; left: 137px; float:right; position:absolute; margin-left: 6px;">
+                                                        <span>Programas de fromarción de un año o año y medio con titulación de tecnicos</span>
+                                                    </div>
+                                                </label>
+                                            </span>
+                                            <span class="radio_accion">
+                                                <label id="label201" style="background-color: rgb(155, 205, 255); font-weight: normal;">
+                                                    <input class="chequeo" name="radio" onclick="changeLabel('Carreras Tecnologicas');" type="checkbox" value="opcion201" id="opcion201">
+                                                    <span style="width:120px;">Carreras Tecnologicas</span>
+                                                    <div class="tooltip tooltip_inicio" style="top: 84px; left: 136px; float:right; position:absolute; margin-left: 6px;">
+                                                        <span>Programas de fromarción de dos años o dos años y medios con titulación de tecnologos</span>
+                                                    </div>
+                                                </label>
+                                            </span>
+                                            <span class="radio_accion">
+                                                <label id="label202" style="background-color: rgb(102, 204, 204); font-weight: normal;">
+                                                    <input class="chequeo" name="radio" onclick="changeLabel('Especialización');" type="checkbox" value="opcion202" id="opcion202">
+                                                    <span style="width:120px;">Especialización</span>
+                                                    <div class="tooltip tooltip_inicio" style="top: 120px; left: 137px; float:right; position:absolute; margin-left: 6px;">
+                                                        <span>Programas de formación ezpecial y de corta duración.</span>
+                                                    </div>
+                                                </label>
+                                            </span>
+                                            <span class="radio_accion">
+                                                <label id="label203" style="background-color: rgb(253, 207, 123); font-weight: normal;">
+                                                    <input class="chequeo" name="radio" onclick="changeLabel('Complementario');" type="checkbox" value="opcion203" id="opcion203">
+                                                    <span style="width:120px;font-size:10px;">Complementario</span>
+                                                    <div class="tooltip tooltip_inicio" style="top: 157px; left: 137px; float:right; position:absolute; margin-left: 6px;">
+                                                        <span>Programas de formación complementaria y de corta duración</span>
+                                                    </div>
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-                    </li>
                     </div>
-                    </ul> 
                     <div class="zero">
                         <input type="text" class="buscador_texto_index input_blanco ita" name="buscador_texto" style="width: 80%; font-size: 16px;" placeholder="Ej: Cocina,Contabilidad ">
                     </div>
@@ -83,7 +87,7 @@
                                         <div>
                                             <div>
                                                 <div class="input-wrapper">
-                                                    <input type="text" class="gwt-TextBox" id="ciudadTextInput" autocomplete="off" name="ciudad" placeholder="Ej: Cali, Cartagena ">
+                                                    <input type="text" class="gwt-TextBox" id="ciudadTextInput" autocomplete="off" name="ciudad" placeholder=" Ej: Cali, Cartagena ">
                                                 </div>
                                                 <button type="button" class="gwt-Button" style="float: right; border: none; background-color: white; display: none;" aria-hidden="true">X</button>
                                                 <div class="gwt-SuggestBoxPopup-ciudades" style="display:none" id="campoBusquedaCiudad">
@@ -97,91 +101,63 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div id="empresaBusqueda" style="display: none">
-                                <div class="autocomplete">
-                                    <h2>Empresa</h2>
-                                    <div class="tooltip tooltip_inicio" style="float:right; position:absolute; top: 31px; left: 85px;">
-                                        <span>Ingrese el nombre de la empresa ó NIT para mejorar el resultado de la búsqueda.</span>
-                                    </div>
-                                    <div>
-                                        <div class="back_input" id="divEmpresa" style="border: 0; text-align: left; width: 100%;; min-width: 100px !important; color: #999999; font-style: italic;border-radius:4px;padding-left:15px;height:31px;">
-                                            <input autocomplete="off" maxlenght="200" name="campoEmpresa" style="border: 0; text-align: left; width: 100%; min-width: 100px !important; color: #999999; font-style: italic;border-radius:4px;height:31px;" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div id="divNivelFormacionBusquedaCT" style="display: none;">
-                                <div class="autocomplete">
-                                    <h2>Nivel de Formación</h2>
-                                    <div class="tooltip tooltip_inicio" style="float:right; position:absolute; top: 31px; left: 150px;">
-                                        <span>Seleccione el nivel de formación para mejorar el resultado de la búsqueda.</span>
-                                    </div>
-                                    <div>
-                                        <div class="select_blanco" id="divNivelFormacionCT">
-                                            <select class="gwt-ListBox" style="width: 98%;" name="nfct">
-                                                <option value="-1">Todos los niveles de formación</option>
-                                                <option value="1">AUXILIAR</option>
-                                                <option value="7">ESPECIALIZACIÓN TECNOLÓGICA</option>
-                                                <option value="10">OPERARIO</option>
-                                                <option value="223">PROFUNDIZACIÓN TÉCNICA</option>
-                                                <option value="6">TECNÓLOGO</option>
-                                                <option value="2">TÉCNICO</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    
-
+                    <div id="area_trabajo_1_buscador_3">
+                        <button type="button" class="btn-buscar">
+                            <span class="buscar">buscar</span>
+                        </button>
+                        <label id="label204">
+                            <span class="chequeo">
+                                <input type="checkbox" value="on" id="gwt-uid-49" tabindex="0" name="todosLosProgramas">
+                                <label for="gwt-uid-49"></label>
+                            </span>
+                            <span class="texto_input">Todos los programas</span>
+                            <div class="tooltip tooltip_inicio" id="tt2" style="float:right; position:absolute; top: 10px; left: 195px;">
+                                <span>Esta opción le permite buscar en todos los programas educativos del SENA, sin importar si tienen o no oferta de cursos disponibles en este momento.</span>
+                            </div>
+                        </label>
+                        <label id="label205">
+                            <span class="chequeo">
+                                <input type="checkbox" value="on" id="gwt-uid-50" tabindex="0" name="ofertaDisponible" checked="">
+                                <label for="gwt-uid-50"></label>
+                            </span>
+                            <span class="texto_input">Solo programas con oferta de formación disponible</span>
+                            <div class="tooltip tooltip_inicio" id="tt1" style="float:right; position:absolute; top: 10px; left: 389px;">
+                                <span>Esta opción le permite buscar solo en los programas educativos del SENA, que tienen oferta de formación disponible en este momento.</span>
+                            </div>
+                        </label>
+                    </div>
+                </form>
             </div>
-         <div>
         </div>
-        <div id="area_trabajo_1_buscador_3">
-            <button type="button" class="btn-buscar">
-                <span class="buscar">buscar</span>
-            </button>
-            <label id="label204">
-                <span class="chequeo">
-                    <input type="checkbox" value="on" id="gwt-uid-49" tabindex="0" name="todosLosProgramas">
-                    <label for="gwt-uid-49"></label>
-                </span>
-                <span class="texto_input">Todos los programas</span>
-                <div class="tooltip tooltip_inicio" id="tt2" style="float:right; position:absolute; top: 199px; left: 195px;">
-                    <span>Esta opción le permite buscar en todos los programas educativos del SENA, sin importar si tienen o no oferta de cursos disponibles en este momento.</span>
-                </div>
-            </label>
-            <label id="label205">
-                <span class="chequeo">
-                    <input type="checkbox" value="on" id="gwt-uid-50" tabindex="0" name="ofertaDisponible" checked="">
-                    <label for="gwt-uid-50"></label>
-                </span>
-                <span class="texto_input">Solo programas con oferta de formación disponible</span>
-                <div class="tooltip tooltip_inicio" id="tt1" style="float:right; position:absolute; top: 223px; left: 389px;">
-                    <span>Esta opción le permite buscar solo en los programas educativos del SENA, que tienen oferta de formación disponible en este momento.</span>
-                </div>
-            </label>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Cuando se hace clic en uno de los checkboxes
         $('input[name="todosLosProgramas"], input[name="ofertaDisponible"]').click(function() {
-            // Desmarcar ambos checkboxes
             $('input[name="todosLosProgramas"], input[name="ofertaDisponible"]').prop('checked', false);
-            // Marcar solo el checkbox que se hizo clic
             $(this).prop('checked', true);
         });
     });
 </script>
-    </div>
-    
-    </form>
-    </div>
-    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('input[name="todosLosProgramas"], input[name="ofertaDisponible"]').click(function() {
+            $('input[name="todosLosProgramas"], input[name="ofertaDisponible"]').prop('checked', false);
+            $(this).prop('checked', true);
+        });
 
+        $('input[name="radio"]').click(function() {
+            $('input[name="radio"]').not(this).prop('checked', false);
+            var labelText = $(this).siblings('span.texto_input').text();
+            $('#label_tipo').text(' ' + labelText);
+        });
+    });
+
+    function changeLabel(labelText) {
+        $('#label_tipo').text(' ' + labelText);
+    }
+</script>
 {% endblock %}

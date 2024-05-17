@@ -336,21 +336,8 @@ margin-top: 18px;
 
 element.style {
     width: 80%;
+	 
 }
-.input_blanco, .input_blanco_obligatorio, .input_blanco_ok, .input_blanco_error {
-    /* font-family: "Helvetica Neue", sans-serif; */
-    /* font-size: 13px; */
-    /* color: #222222; */
-    /* position: relative; */
-    padding: 10px 40px 10px 10px;
-    /* border-radius: 6px; */
-    /* background-repeat: no-repeat; */
-    /* width: 100%; */
-    /* margin-top: 6px; */
-    /* border: 1px solid #ccc; */
-    /* margin-bottom: 12px; */
-}
-
 /* Text inputs */
 .input_blanco,.input_blanco_obligatorio,.input_blanco_ok,.input_blanco_error
 	{
@@ -362,9 +349,9 @@ element.style {
 	border-radius: 6px;
 	background-repeat: no-repeat;
 	width: 100%;
-	margin-top: 6px;
+	margin-top: -1px;
 	border: 1px solid #ccc;
-	margin-bottom:12px;
+	margin-bottom:10px;
 }
 
 input:focus {
